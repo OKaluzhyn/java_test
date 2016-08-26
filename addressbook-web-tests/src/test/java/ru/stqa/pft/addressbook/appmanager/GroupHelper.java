@@ -20,6 +20,7 @@ public class GroupHelper extends HelperBase{
   }
 
   public void sumbitGroupCreation() {
+
     click(By.name("submit"));
   }
 

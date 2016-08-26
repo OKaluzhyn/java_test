@@ -7,6 +7,7 @@ import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 /**
  * Created by o.kaluzhin on 19.07.2016.
  */
+
 public class TestBase {
 
   protected final ApplicationManager app = new ApplicationManager();
