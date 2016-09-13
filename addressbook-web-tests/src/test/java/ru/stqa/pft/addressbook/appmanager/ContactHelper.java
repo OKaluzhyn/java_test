@@ -25,7 +25,7 @@ public class ContactHelper extends HelperBase{
 
   public void fillContactForm(ContactData contactData, boolean creation) {
     type((By.name("firstname")), contactData.getFirstname());
-    type((By.name("middlename")), contactData.getLastname());
+    type((By.name("lastname")), contactData.getLastname());
     type((By.name("home")), contactData.getHomePhone());
     type((By.name("email")), contactData.getEmail());
 
@@ -45,16 +45,16 @@ public class ContactHelper extends HelperBase{
     }
 
 
-  public void chooseContact() {
-    click(By.name("selected[]"));
+  public void chooseContact(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
     public void closePopUp(){
     wd.switchTo().alert().accept();
   }
 
-  public void pressModifacate() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  public void pressModifacate(int index) {
+    wd.findElements(By.xpath("//table[@id='maintable']/tbody//td[8]/a/img")).get(index).click();
   }
 
   public void submitContactModification() {
@@ -70,6 +70,10 @@ public class ContactHelper extends HelperBase{
 
   public boolean isThereAContact() {
     return isElementPresent((By.name("selected[]")));
+  }
+
+  public int getContactCount() {
+    return wd.findElements(By.name("selected[]")).size();
   }
 }
 
