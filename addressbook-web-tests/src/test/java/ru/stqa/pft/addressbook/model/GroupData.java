@@ -1,54 +1,18 @@
 package ru.stqa.pft.addressbook.model;
 
 public class GroupData {
-  public void setId(int id) {
-    this.id = id;
-  }
 
-  private  int id;
-
-
+  private int id = Integer.MAX_VALUE;
+  private String name;
+  private String header;
+  private String footer;
 
 
-  @Override
-  public int hashCode() {
-    return name != null ? name.hashCode() : 0;
-  }
 
-  public GroupData(String name, String header, String footer) {
-    this.id = Integer.MAX_VALUE;
-    this.name = name;
-    this.header = header;
-    this.footer = footer;
-
-  }
-
-  public GroupData(int id, String name, String header, String footer) {
-    this.id = id;
-    this.name = name;
-    this.header = header;
-    this.footer = footer;
-
-  }
-
-  @Override
-  public String toString() {
-    return "GroupData{" +
-            "id='" + id + '\'' +
-            ", name='" + name + '\'' +
-            '}';
-  }
 
   public int getId() {
     return id;
   }
-
-  private final String name;
-  private final String header;
-  private final String footer;
-
-
-
 
   public String getName() {
 
@@ -65,6 +29,26 @@ public class GroupData {
     return footer;
   }
 
+  public GroupData withFooter(String footer) {
+    this.footer = footer;
+    return this;
+  }
+
+  public GroupData withName(String name) {
+    this.name = name;
+    return this;
+  }
+
+  public GroupData withHeader(String header) {
+    this.header = header;
+    return this;
+  }
+
+  public GroupData withId(int id) {
+    this.id = id;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -74,6 +58,19 @@ public class GroupData {
 
     return name != null ? name.equals(groupData.name) : groupData.name == null;
 
+  }
+
+  @Override
+  public String toString() {
+    return "GroupData{" +
+            "id='" + id + '\'' +
+            ", name='" + name + '\'' +
+            '}';
+  }
+
+  @Override
+  public int hashCode() {
+    return name != null ? name.hashCode() : 0;
   }
 
 }

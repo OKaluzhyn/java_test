@@ -15,12 +15,11 @@ import java.util.List;
 /**
  * Created by o.kaluzhin on 25.08.2016.
  */
-public class ContactHelper extends HelperBase{
+public class ContactHelper extends HelperBase {
 
   public ContactHelper(WebDriver wd) {
     super(wd);
   }
-
 
 
   public void submitContactCreation() {
@@ -44,16 +43,16 @@ public class ContactHelper extends HelperBase{
     click(By.linkText("add new"));
   }
 
-    public void pressDeleteContact() {
-      click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
-    }
+  public void pressDeleteContact() {
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+  }
 
 
   public void chooseContact(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
-    public void closePopUp(){
+  public void closePopUp() {
     wd.switchTo().alert().accept();
   }
 
@@ -85,15 +84,6 @@ public class ContactHelper extends HelperBase{
   }
 
 
-
-  /*public boolean isThereAContact() {
-    return isElementPresent((By.name("selected[]")));
-  }
-
-  /*public int getContactCount() {
-    return wd.findElements(By.name("selected[]")).size();
-  }*/
-
   public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
@@ -103,10 +93,19 @@ public class ContactHelper extends HelperBase{
       //String id = element.findElement(By.tagName("input")).getAttribute("value");
       String firstname = element.findElement(By.xpath("td[3]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData(id, firstname, null, null, null, null);
+      ContactData contact = new ContactData().withId(id).withFirstname(firstname);
       contacts.add(contact);
     }
     return contacts;
   }
+
+  /*public boolean isThereAContact() {
+    return isElementPresent((By.name("selected[]")));
+  }
+
+  /*public int getContactCount() {
+    return wd.findElements(By.name("selected[]")).size();
+  }*/
+
 }
 
